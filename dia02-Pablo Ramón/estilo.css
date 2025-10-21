@@ -1,26 +1,39 @@
-body{
-font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
-font-size: 25px;
-letter-spacing: 2px;
-word-spacing: 2px;
-color: #273092;
-font-weight: normal;
-text-decoration: none;
-font-style: normal;
-font-variant: normal;
-text-transform: none;
-background-color: black;
+body {
+    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-size: 25px;
+    letter-spacing: 2px;
+    word-spacing: 2px;
+    color: #273092;
+    font-weight: normal;
+    text-decoration: none;
+    font-style: normal;
+    font-variant: normal;
+    text-transform: none;
+    background-color: black;
 }
 
-img{
+img {
     border: 5px solid #2af21f;
 }
 
-ol li:first-child{/*tendria que funcionar con el +*/
+ol li:first-child {
+    /*tendria que funcionar con el +*/
     text-transform: uppercase;
 }
 
-ul li{
+ul li {
     color: purple;
     font-size: 30;
+}
+
+article {
+    border: 5px, solid green;
+}
+
+#ma{
+    background-image: url(´morcillas-arroz-y-cebolla-1kg.jpg´);
+    #ma{
+        width: 30px;
+        height: auto;
+    }
 }
