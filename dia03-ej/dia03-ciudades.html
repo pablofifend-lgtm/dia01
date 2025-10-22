@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ciudades</title>
+</head>
+
+<body>
+    <ol id="lista">
+    </ol>
+    <input type="text" id="nuevaciudad" placeholder="Introduce ciudad">
+    <input type="button" id="agregarciudad" value="Agregar ciudad">
+
+    <script>
+        
+        let botonA = document.getElementById("agregarciudad");
+        
+        botonA.addEventListener("click", agregarCiudad);
+
+        function agregarCiudad() {
+            let ciudadInput = document.getElementById("nuevaciudad");
+            let ciudadNombre = ciudadInput.value;
+
+            if (nuevaciudad) {
+            // nuevaciudad.trim te quita espacios en blanco de las palabras
+                let listaC = document.getElementById("lista");
+                let nuevaC = document.createElement("li");
+                nuevaC.textContent = ciudadNombre;
+                listaC.appendChild(nuevaC);
+                ciudadInput.value = "";
+            } else {
+                alert("Por favor");
+            }
+        }
+    </script>
+</body>
+
+</html>

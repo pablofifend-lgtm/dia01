@@ -3,13 +3,18 @@ body {
     font-size: 25px;
     letter-spacing: 2px;
     word-spacing: 2px;
-    color: #273092;
+    color: #8891ed;
     font-weight: normal;
     text-decoration: none;
     font-style: normal;
     font-variant: normal;
     text-transform: none;
-    background-color: black;
+    background-color: rgb(223, 217, 217);
+}
+
+.m {
+    background-image: url("morci-G.jpg");
+    background-color: transparent;
 }
 
 img {
@@ -30,10 +35,15 @@ article {
     border: 5px, solid green;
 }
 
-#ma{
-    background-image: url(´morcillas-arroz-y-cebolla-1kg.jpg´);
-    #ma{
-        width: 30px;
-        height: auto;
-    }
+.ma {
+    height: 200px;
+    background-repeat: repeat-x;
+    background-image: url('morcillas-arroz-y-cebolla-1kg.jpg');
+
+}
+
+.pm {
+    background-image: url('plato-m.jpg');
+    background-repeat: repeat-x;
+
 }

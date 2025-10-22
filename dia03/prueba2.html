@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+
+<head>
+    <title>prueba 1</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="text" id="entrada" placeholder="Introduce tu nombre">
+    <input type="button" id="boton"></input>
+    <div id="resultado"></div>
+    <script>
+        let boton = document.getElementById("boton");
+
+        boton.addEventListener("clcik", sacaN);
+                boton.addEventListener("clcik", sacaN);
+        boton.addEventListener("clcik", sacaN);
+
+
+        let n1 = 0;
+        for (let i = 0; i < 100; i++) {
+            if (i % 2 === 0) {
+                n1 += i;
+            }
+        }
+        document.write("La suma de los pares son " + n1 + "<br>");
+
+        let n2 = 0;
+        let imp = 0;
+        for (let i = 0; i <= 102; i++) {
+            if (i % 2 !== 0) {
+                imp++;
+                n2 += i;
+            }
+
+        }
+        document.write("El valor medio de impares es " + n2 + "<br>");
+        document.write("la suma de 3, 5, 7 es: " + sumar(3, 5, 7) + "<br>");
+        document.write("la suma de 10, 20, 30, 40, 50 es: " + sumar(10, 20, 30, 40, 50) + "<br>");
+
+        function sacaN(source) {
+            let cont = document.getElementById("entrada");
+            let resultadoDiv = document.getElementById("resultado");
+            let nuevoElemento = document.createElement("p");
+            nuevoElemento.textContent = "Has introducido " + valorIntroducido.value;
+            resultadoDiv.appendChild(nuevoElemento);
+            //document.write(cont.value);
+            console.log(source);
+        }
+
+        function sumar() {
+            let numParametros = arguments.length;
+            let suma = 0;
+            for (let j = 0; j < numParametros; j++) {
+                suma += arguments[j];
+            }
+            return suma;
+        }
+    </script>
+
+</body>
+
+</html>
