@@ -1,0 +1,41 @@
+input {
+    border: solid 1px;
+}
+
+input:invalid {
+    border-color: red;
+}
+
+input:valid {
+    border-color: blue;
+}
+
+body {
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+fieldset {
+    background-color: #cdaac4;
+    padding: 1rem;
+    border: 1px solid #cfd8e3;
+    border-radius: 6px;
+}
+
+#f {
+    width: 400px;
+    margin: auto;
+}
+* {
+    color: white;
+}
+legend {
+    font-weight: bold;
+}
+
+h1#fm {
+font-family: 'Times New Roman', Times, serif;
+font-style: oblique;
+}

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exponenciales</title>
+</head>
+
+<body>
+    Base :
+    <input type="text" id="base" placeholder="pon la base">
+    Exponente :
+    <input type="text" id="exponente" placeholder="pon el exponente">
+    <input type="button" id="calcula" value="Calcula">
+    <input type="text" id="mostrar">
+    <input type="button" id="mt" value="multiplica">
+    <input type="text" id="multi">
+
+    <script>
+
+        document.getElementById("calcula").addEventListener("click", calcula);
+
+        function calcula() {
+            let baseI = document.getElementById("base").value;
+            let exponenteI = document.getElementById("exponente").value;
+            let result = baseI ** exponenteI;
+
+            document.getElementById("mostrar").value = result;
+            document.getElementById("mt").addEventListener("click", doble);
+            console.log(result);
+        }
+
+        function doble() {
+            let rf = document.getElementById("mostrar").value;
+            let resultF = rf * rf;
+            document.getElementById("multi").value = resultF
+            //multi.appendChild(resultF);
+            //document.getElementById("mt").addEventListener("click",doble);
+            console.log(resultF);
+        }
+
+    </script>
+</body>
+
+</html>

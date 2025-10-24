@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" type="text/css" href="estilo.css" media="screen">
+
+</head>
+
+<body>
+    <div id="f">
+        <h1 id="fm">Formulario Fan Marvel</h1>
+        <form name="registro" method="post">
+            <fieldset>
+                <legend>Datos personales</legend>
+                <div id="nombreC" class="field">
+                    <label for="nombre">Nombre Completo : </label>
+                    <input id="nombre" name="nombreCompleto" required type="text"
+                        placeholder="Introduce Nombre Completo">
+                </div>
+                <div id="edad" class="field">
+                    <label for="edadU">Edad : </label>
+                    <input id="edad" min="12" max="120" name="edadUsuario" required type="number"
+                        placeholder="Introduce Edad">
+                </div>
+                <div id="tfn" class="field">
+                    <label for="tfnU">Teléfono : </label>
+                    <input id="tfn" name="tfnUsuario" required type="tel" placeholder="Introduce Teléfono">
+                </div>
+                <div id="dc" class="field">
+                    <label for="dcc">Dirección : <br></label>
+                    <textarea id="dc" name="dcUsuario" rows="4" cols="50" maxlength="200" type="text"
+                        placeholder="Introduce la Dirección"></textarea>
+                </div>
+            </fieldset>
+            <fieldset>
+                <legend>Datos frikis</legend>
+                Seleccione un dioma: <br><br>
+                <select name="idioma" id="idiomaT">
+                    <optgroup label="Idioma">
+                        <option value="selec">Selecciona un idioma</option>
+
+                        <option value="ingles">Ingles</option>
+                        <option value="frances">Frances</option>
+                        <option value="español">Español</option>
+                    </optgroup>
+                </select>
+                <br><br>
+                Selccione un personaje : <br><br>
+                <select name="personajes" id="personajesF">
+                    <optgroup label="Los vengadores">
+                        <option value="selec">Selecciona un personaje</option>
+
+                        <option value="Thor">Thor</option>
+                        <option value="Capitan America">Capitan America</option>
+                        <option value="Hulk">Hulk</option>
+                        <option value="Ojo de Halcon">Ojo de Halcon</option>
+                    </optgroup>
+                    <optgroup label="Los cuatro Fantasticos">
+                        <option value="La cosa">La cosa</option>
+                        <option value="La mujer invisible">La mujer invisible</option>
+                        <option value="Mr Fantastico">Mr Fantastico</option>
+                        <option value="La antorcha humana">La antorcha humana</option>
+                    </optgroup>
+                </select>
+                <br><br>Selecciona tu color preferido : <br>
+                <div id="col">
+                    <input type="color" id="co"></option>
+                </div>
+
+            </fieldset>
+        </form>
+        <div style="text-align:center; margin-top:1rem;">
+            <button id="btnEnviar" type="button">Enviar</button>
+        </div>
+    </div>
+</body>
+<style>
+    body {
+        background-image: url('https://static.wikia.nocookie.net/marvelfanon/images/6/67/Avengers_vs_fantastic_four_poster.jpg/revision/latest?cb=20200701200529&path-prefix=es');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+</html>

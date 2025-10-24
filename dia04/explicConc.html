@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <title>Concatenar</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <h1>Concatenar nombre y apellido</h1>
+    <input type="text" id="nombre" placeholder="Nombre">
+    <input type="text" id="apellido" placeholder="Apellido">
+    <input type="button" id="concatena" value="Concatena">
+    <input type="text" id="concatenado">
+    <input type="button" id="ponEnLista" value="pon">
+    <ul id="lista"></ul>
+
+    <script>
+        document.getElementById("concatena").addEventListener("click", concatena);
+
+        function concatena() {
+            let nombre = document.getElementById("nombre").value;
+            let apellido = document.getElementById("apellido").value;
+            let textoConcatenado = nombre + " " + apellido;
+            document.getElementById("concatenado").value = textoConcatenado;
+            document.getElementById("ponEnLista").addEventListener("click", muestra);
+            //alert(concatenado);
+        }
+        function muestra() {
+            let textoConcatenado = document.getElementById("concatenado").value;
+            let textoFinal = textoConcatenado + "(" + textoConcatenado.length + ")";
+            let lista = document.getElementById("lista");
+            let nuevoNombre = document.createElement("li");
+            nuevoNombre.textContent = textoFinal;
+            lista.appendChild(nuevoNombre);
+            document.getElementById("ponEnLista").removeEventListener("click", muestra);
+        }
+    </script>
+</body>

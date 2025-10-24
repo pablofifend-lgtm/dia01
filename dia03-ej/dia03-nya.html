@@ -15,21 +15,44 @@
     Apellido :
     <input type="text" id="nuevoApellido" placeholder="Introduce apellido">
     <br><br>
-    <input type="button" id="agregarNyA" value="Agregar Nombre y Apellido">
+    <input type="button" id="concatena" value="Concatena">
     <br><br>Nombre completo :
     <input type="text" id="nombreCompleto" placeholder="Nombre completo">
+    <input type="button" id="agregarNombre" value="Agregar Nombre">
+
+    <ol id="nombresAgregados"></ol>
 
     <script>
-        let botonNa = document.getElementById("agregarNyA");
+        let botonNa = document.getElementById("concatena");
 
-        botonNa.addEventListener("click", agregar);
+        botonNa.addEventListener("click", concatN);
 
-        function concatN(){
+        let botonA = document.getElementById("agregarNombre");
+        botonA.addEventListener("click", agregarNombre);
+
+        function concatN() {
             let nombreI = document.getElementById("nuevoNombre");
             let apellidoI = document.getElementById("nuevoApellido");
             let nyaI = document.getElementById("nombreCompleto");
 
-            let 
+            let nombre = nombreI.value;
+            let apellido = apellidoI.value;
+
+            let nombreC = nombre + " " + apellido;
+            nyaI.value = nombreC;
+        }
+
+        function agregarNombre() {
+            let nombreCompleto = document.getElementById("nombreCompleto").value;
+
+            if (nombreCompleto.trim() !== "") {
+                let listaNombres = document.getElementById("nombresAgregados")
+                let nuevoNombre = document.createElement("li");
+                nuevoNombre.textContent = nombreCompleto + "(" + nombreCompleto.length + ")";
+                listaNombres.appendChild(nuevoNombre);
+            } else {
+                alert("introduce ciudad");
+            }
         }
     </script>
 </body>
