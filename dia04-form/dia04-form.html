@@ -12,31 +12,31 @@
 <body>
     <div id="f">
         <h1 id="fm">Formulario Fan Marvel</h1>
-        <form name="registro" method="post">
+        <form id="fo" name="registro" method="post">
             <fieldset>
-                <legend>Datos personales</legend>
+                <legend><br>Datos personales</legend>
                 <div id="nombreC" class="field">
-                    <label for="nombre">Nombre Completo : </label>
+                    <label for="nombre">Nombre Completo : <br><br></label>
                     <input id="nombre" name="nombreCompleto" required type="text"
                         placeholder="Introduce Nombre Completo">
                 </div>
                 <div id="edad" class="field">
-                    <label for="edadU">Edad : </label>
+                    <label for="edadU"><br>Edad : <br><br></label>
                     <input id="edad" min="12" max="120" name="edadUsuario" required type="number"
                         placeholder="Introduce Edad">
                 </div>
                 <div id="tfn" class="field">
-                    <label for="tfnU">Teléfono : </label>
+                    <label for="tfnU"><br>Teléfono : <br><br></label>
                     <input id="tfn" name="tfnUsuario" required type="tel" placeholder="Introduce Teléfono">
                 </div>
                 <div id="dc" class="field">
-                    <label for="dcc">Dirección : <br></label>
+                    <label for="dcc"><br>Dirección : <br><br></label>
                     <textarea id="dc" name="dcUsuario" rows="4" cols="50" maxlength="200" type="text"
                         placeholder="Introduce la Dirección"></textarea>
                 </div>
             </fieldset>
-            <fieldset>
-                <legend>Datos frikis</legend>
+            <fieldset id="df">
+                <legend><br><h4>Datos frikis</h4></legend>
                 Seleccione un dioma: <br><br>
                 <select name="idioma" id="idiomaT">
                     <optgroup label="Idioma">
@@ -77,11 +77,4 @@
         </div>
     </div>
 </body>
-<style>
-    body {
-        background-image: url('https://static.wikia.nocookie.net/marvelfanon/images/6/67/Avengers_vs_fantastic_four_poster.jpg/revision/latest?cb=20200701200529&path-prefix=es');
-        background-size: cover;
-        background-position: center;
-    }
-</style>
 </html>

@@ -1,0 +1,81 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ten Buttons</title>
+    <style>
+        div {
+            margin: 5px;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            display: block;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="botonera">
+    </div>
+    <div id="operaciones"></div>
+    <div>
+        <input type="text" id="visor">
+    </div>
+
+    <script>
+        let valor1 = 0;
+        let botonera = document.getElementById("botonera");
+        let operacionespanel = document.getElementById("operaciones");
+        let operacion = "";
+        let visor = document.getElementById("visor");
+        for (let index = 0; index < 10; index++) {
+            let botonnuevo = document.createElement("input");
+            botonnuevo.setAttribute("type", "button");
+            botonnuevo.setAttribute("value", index);
+            botonnuevo.addEventListener("click", muestraboton);
+            botonera.appendChild(botonnuevo);
+        }
+        let operaciones = ["+", "-", "/", "*", "^"];
+        for (let index = 0; index < operaciones.length; index++) {
+            let operacionNueva = document.createElement("input");
+            operacionNueva.setAttribute("type", "button");
+            operacionNueva.setAttribute("value", operaciones[index]);
+            operacionNueva.addEventListener("click", opera);
+            operacionespanel.appendChild(operacionNueva);
+        }
+        let signoIgual = document.createElement("input");
+        signoIgual.setAttribute("type", "button");
+        signoIgual.setAttribute("value", "=");
+        signoIgual.addEventListener("click", resultado);
+        operacionespanel.appendChild(signoIgual);
+        function resultado() {
+            let valor2 = Number(visor.value);
+            let resultado = 0;
+            switch (operacion) {
+                case "+": resultado = valor1 + valor2; break;
+                case "-": resultado = valor1 - valor2; break;
+                case "/": resultado = valor1 / valor2; break;
+                case "*": resultado = valor1 * valor2; break;
+                case "^": resultado = valor1 ** valor2; break;
+            }
+            visor.value = resultado.toString();
+        }
+
+        function opera(event) {
+            valor1 = Number(visor.value);
+            operacion = event.target.value;
+            visor.value = "";
+
+        }
+        function muestraboton(event) {
+            visor.value += event.target.value;
+        }
+    </script>
+</body>
+
+</html> 

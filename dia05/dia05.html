@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Ejemplo listener</h1>
+    <input type="button" value="click" id="myButton">
+    <input type="text" value="click" id="myText">
+    <ul id="lista"></ul>
+
+    <script>
+        // coge el elemento del id myButton
+        let boton = document.getElementById("myButton");
+        let cuadroTexto = document.getElementById("myText");
+        let lista = document.getElementById("lista");
+
+        //a la variable boton que escuche que cuando haga click, 
+        // realice la funcion pulsa
+        boton.addEventListener("click", pulsa)
+
+        function pulsa() {
+
+            //a la variable texto extraes el valor de la variable cuadrotexto
+            let texto = cuadroTexto.value;
+            if (texto) {
+                //si la variable texto es true, entonces se crea la variable nuevo elemento
+                //donde nuevoElemento creara un documento donde creara un elemento de tipo li
+                let nuevoElemento = document.createElement("li");
+                nuevoElemento.textContent = texto;
+                lista.appendChild(nuevoElemento);
+                cuadroTexto.value = "";
+            } else {
+                alert("Introduce un texto");
+
+
+            }
+        }
+
+
+
+    </script>
+</body>
+
+</html>
