@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        #userInfo {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <label for="userId">User ID:</label>
+        <input type="number" id="userId" min="1" value="1">
+        <button onclick="fetchUserData()">OK</button>
+    </div>
+
+    <div id="userInfo"></div>
+    <ul id="userPosts"></ul>
+
+    <script>
+        async function fetchUserData() {
+            const userId = document.getElementById('userId').value;
+            const userInfoDiv = document.getElementById('userInfo');
+            const userPostsList = document.getElementById('userPosts');
+
+            try {
+                // Fetch user data
+                const userResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}`);
+                const userData = await userResponse.json();
+
+                // Display user info
+                userInfoDiv.innerHTML = `
+                    <h1>${userData.name}</h1>
+                    <h2>${userData.address.street}, ${userData.address.suite}, ${userData.address.city}, ${userData.address.zipcode}</h2>
+                `;
+
+                // Fetch user posts
+                const postsResponse = await fetch(`https://jsonplaceholder.typicode.com/users/${userId}/posts`);
+                const postsData = await postsResponse.json();
+
+                // Display posts
+                userPostsList.innerHTML = '';
+                postsData.forEach(post => {
+                    const li = document.createElement('li');
+                    li.textContent = post.title;
+                    userPostsList.appendChild(li);
+                });
+
+            } catch (error) {
+                userInfoDiv.innerHTML = '<h1>Error loading user data</h1>';
+                userPostsList.innerHTML = '';
+                console.error('Error:', error);
+            }
+        }
+
+        // Load initial data for user 1
+        fetchUserData();
+    </script>
+</body>
+</html>

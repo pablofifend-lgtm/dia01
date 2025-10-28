@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="input1" placeholder="Usuario">
+        <button id="boton">OK</button>
+        <p id="result"></p>
+    </div>
+    <!--<h2>Visor de Usuarios</h2>
+    Introduce Usuarios: <input type="text" id="visor">
+    <input type="button" value="OK">-->
+
+    <script>
+
+        let url = "https:jsonplaceholder.typicode.com/users/"
+        //let urlPost = "https:jsonplaceholder.typicode.com/users/"
+
+        document.getElementById("boton").addEventListener("click", sacaInfoUsu)
+
+        functionsacaInfoUsu(){
+            let numUsuario = document.getElementById("input1").value;
+            url += numUsuario;
+            fetch(url)
+                .then(respuesta => respuesta.json())
+                .then(respuesta)
+
+        }
+
+        let myAsyn = async function (url1) {
+            try {
+                let result = await getRecuperar
+            } catch { }
+        }
+
+        //fetch('https://jsonplaceholder.typicode.com/users/1', {})
+        //fetch('https://jsonplaceholder.typicode.com/users/1')
+        /*.then(respuespa => {
+
+        })*/
+        /*.then(respuesta => console.log(respuesta)
+
+        )
+        .catch(error => console.log(error))*/
+
+        /*.catch(error => {
+
+        })*/
+    </script>
+</body>
+
+</html>
