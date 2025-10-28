@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>
+    <style>
+        :root {
+            --bg: #f3f4f6;
+            --panel: #ffffff;
+            --accent: #0ea5a3;
+            --btn: #e6e7e8;
+            --op: #ffd166;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, var(--bg), #fff);
+            padding: 20px;
+        }
+
+        .calc {
+            width: 320px;
+            background: var(--panel);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.12);
+            overflow: hidden;
+        }
+
+        .pri {
+            background: linear-gradient(180deg, #0b1220 0%, #071021 60%);
+            color: #fff;
+            padding: 18px;
+            text-align: right;
+            font-size: 32px;
+            letter-spacing: 0.6px;
+        }
+
+        .sec {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 14px;
+        }
+
+        .botones {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 16px;
+            background: linear-gradient(180deg, #f7fafc, #f3f6f8);
+        }
+
+        button {
+            height: 56px;
+            font-size: 18px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--btn);
+            cursor: pointer;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) inset;
+        }
+
+        button.operator {
+            background: var(--op);
+        }
+
+        button.result {
+            background: var(--accent);
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        button.wide {
+            grid-column: span 2;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="calc" label="Calculadora básica">
+        <div class="pri" id="d1">
+            <div class="sec" id="history">&nbsp;</div>
+            <div id="value">0</div>
+        </div>
+        <div class="botones" id="bt">
+            <button id="reset">C</button>
+            <button id="plusminus">±</button>
+            <button id="porcentaje">%</button>
+            <button class="operator" data-op="/">÷</button>
+
+            <button class="num" id="7">7</button>
+            <button class="num">8</button>
+            <button class="num">9</button>
+            <button class="operator" data-op="*">×</button>
+
+            <button class="num">4</button>
+            <button class="num">5</button>
+            <button class="num">6</button>
+            <button class="operator" data-op="-">−</button>
+
+            <button class="num">1</button>
+            <button class="num">2</button>
+            <button class="num">3</button>
+            <button class="operator" data-op="+">+</button>
+
+            <button class="button wide">0</button>
+            <!--<button class="num">.</button>-->
+            <button class="result" id="result">=</button>
+        </div>
+    </div>
+
+    <script>
+
+    </script>
+</body>
+
+</html>
