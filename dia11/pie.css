@@ -1,0 +1,19 @@
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px 0;
+}
+
+footer .iconos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    /* Espaciado entre iconos */
+    position: absolute;
+}
+
+footer.fo{
+    display: flex;
+}

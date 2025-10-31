@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <input type="text" id="input1" placeholder="introduce nº de usuario">
+        <button id="boton">OK</button>
+        <p id="result">
+            <h1 id="usuario"></h1>
+        </p>
+    </div>
+    <script>
+        let url = "https://jsonplaceholder.typicode.com/users/";
+        let urlPost = "https://jsonplaceholder.typicode.com/users/posts?userId=";
+
+        document.getElementById("boton").addEventListener("click", sacarNum);
+        function sacarNum() {
+
+            //para que te saque el valor del id input1
+            let numeroUsuario = document.getElementById("input1").value;
+            url += numeroUsuario;
+            //fetch es para conectar al json a traves de la url
+            fetch(url)
+                //funcioes => son arrowes se ponen para que
+                .then((response) => response.json())
+                .then((json) => {
+                    let parrafoNuevo = document.createElement("p");
+                    //.name es una propiedad del json, un filtro
+                    //a la variable parrafoNuevo se le pone texto en el contenido
+                    // donde sera un json y saldra solo el campo name
+                    parrafoNuevo.textContent = json.name;
+                    document.getElementById("result").appendChild(parrafoNuevo);
+                })
+
+            //a la urlPost le concatenas con el numero de usuario
+            urlPost += numeroUsuario;
+
+            fetch(urlPost)
+                //entonces respuesta ejecutara respuesta y lo convierte a json
+                .then(respuesta => respuesta.json())
+                .then(datos => {
+                    datos.forEach(element => {
+                        let parrafoNuevo = document.createElement("p");
+                        parrafoNuevo.textContent = element.title;
+
+                        document.getElementById("result").appendChild(parrafoNuevo);
+                    })
+                })
+        }
+    </script>
+</body>
+
+</html>

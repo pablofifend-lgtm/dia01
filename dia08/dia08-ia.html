@@ -1,0 +1,166 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Día08 - Albums del usuario</title>
+    <style>
+        body {
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            max-width: 800px;
+            margin: 40px auto;
+            padding: 0 16px;
+            color: #222;
+        }
+
+        header {
+            margin-bottom: 24px;
+        }
+
+        h1 {
+            font-size: 1.2rem;
+            margin: 0 0 8px;
+        }
+
+        #usuario {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: #0a58ca;
+        }
+
+        .controls {
+            margin: 12px 0 20px;
+            display: flex;
+            gap: 8px;
+            align-items: center;
+        }
+
+        input[type="number"] {
+            width: 80px;
+            padding: 6px 8px;
+            font-size: 1rem;
+        }
+
+        button {
+            padding: 7px 12px;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #albums {
+            margin-top: 28px;
+        }
+
+        .album-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .album-title {
+            background: linear-gradient(180deg, rgba(255, 255, 255, 0.02), rgba(250, 250, 250, 0.02));
+            padding: 10px 12px;
+            border-radius: 6px;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.04);
+            font-weight: 500;
+            color: #111;
+            /* sombra de texto solicitada */
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25), 0 1px 0 rgba(255, 255, 255, 0.03);
+        }
+
+        .muted {
+            color: #666;
+            font-size: 0.95rem;
+        }
+
+        .error {
+            color: #b00020;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Buscar usuario y sus álbumes</h1>
+        <div id="usuario" aria-live="polite"></div>
+    </header>
+
+    <div class="controls">
+        <label for="userId">ID usuario:</label>
+        <input id="userId" type="number" min="1" step="1" value="3" />
+        <button id="loadBtn">Cargar</button>
+        <span id="status" class="muted"></span>
+    </div>
+
+    <section id="albums">
+        <h2 class="muted">Álbumes</h2>
+        <ul id="albumList" class="album-list"></ul>
+    </section>
+
+    <script>
+        async function fetchJson(url) {
+            const res = await fetch(url);
+            if (!res.ok) throw new Error('Network response was not ok: ' + res.status);
+            return res.json();
+        }
+
+        async function loadForUser(userId) {
+            const usuarioEl = document.getElementById('usuario');
+            const statusEl = document.getElementById('status');
+            const albumList = document.getElementById('albumList');
+            usuarioEl.textContent = '';
+            albumList.innerHTML = '';
+            statusEl.textContent = 'Cargando...';
+
+            try {
+                // Obtener datos del usuario
+                const user = await fetchJson('https://jsonplaceholder.typicode.com/users/' + encodeURIComponent(userId));
+                // Mostrar "Nombre (Ciudad)"
+                const ciudad = user && user.address && user.address.city ? user.address.city : 'Ciudad desconocida';
+                usuarioEl.textContent = `${user.name} (${ciudad})`;
+
+                // Obtener álbumes del usuario
+                const albums = await fetchJson('https://jsonplaceholder.typicode.com/albums?userId=' + encodeURIComponent(userId));
+                if (!albums || albums.length === 0) {
+                    albumList.innerHTML = '<li class="muted">No se encontraron álbumes para este usuario.</li>';
+                } else {
+                    albumList.innerHTML = '';
+                    for (const album of albums) {
+                        const li = document.createElement('li');
+                        li.className = 'album-title';
+                        li.textContent = album.title;
+                        albumList.appendChild(li);
+                    }
+                }
+                statusEl.textContent = '';
+            } catch (err) {
+                usuarioEl.innerHTML = '<span class="error">No se pudo cargar la información.</span>';
+                albumList.innerHTML = '<li class="error">Error: ' + (err.message || 'desconocido') + '</li>';
+                statusEl.textContent = '';
+                console.error(err);
+            }
+        }
+
+        // Comportamiento del botón
+        document.getElementById('loadBtn').addEventListener('click', () => {
+            const id = document.getElementById('userId').value.trim();
+            if (!id) return;
+            loadForUser(id);
+        });
+
+        // Pedir ID al cargar la página (como "la vez anterior")
+        window.addEventListener('load', () => {
+            const defaultId = document.getElementById('userId').value || '3';
+            const answer = prompt('Introduce el ID de usuario', defaultId);
+            const idToLoad = (answer === null || answer.trim() === '') ? defaultId : answer.trim();
+            document.getElementById('userId').value = idToLoad;
+            loadForUser(idToLoad);
+        });
+    </script>
+</body>
+
+</html>

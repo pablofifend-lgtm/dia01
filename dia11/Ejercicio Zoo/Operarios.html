@@ -1,0 +1,61 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" type="text/css" href="styles/ZooStyle.css" />
+    <title>Operarios</title>
+</head>
+<body>
+    <article>
+        <h2>Operarios</h2>
+        <p>Nuestra plantilla de profesionales y por encima de todo, entusiastas amantes de los animales le guiará en nuestras instalaciones y hará de su visita una jornada inolvidable.</p>   
+    </article>
+    <section class="staff">
+        <img src="Operarios/100x160/Operario01.jpg"  />
+        <img src="Operarios/100x160/Operario02.jpg" />
+        <img src="Operarios/100x160/Operario03.jpg" />
+        <img src="Operarios/100x160/Operario04.jpg" />
+        <img src="Operarios/100x160/Operario05.jpg" />
+        <img src="Operarios/100x160/Operario06.jpg" />
+        <img src="Operarios/100x160/Operario07.jpg" />
+        <img src="Operarios/100x160/Operario08.jpg" />
+        <img src="Operarios/100x160/Operario09.jpg" />
+        <img src="Operarios/100x160/Operario10.jpg" />
+    </section>
+
+    <form id="userForm" onsubmit="validateUserForm()">
+        <p>Introduzca los datos del nuevo usuario:</p>
+        <table>
+            <tr>
+                <td><label>Usuario</label></td>
+                <td><input type="text" name="user" id="user" class="textbox" required/></td>
+            </tr>
+            <tr>
+                <td><label>Contraseña</label></td>
+                <td><input type="password" name="password" id="password" class="textbox" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,20}$" required></td>
+            </tr>
+            <tr>
+                <td><label>Edad</label></td>
+                <td><input type="number" name="age" id="age" class="numberbox" min="18" max="99" required></td>
+            </tr>
+            <tr>
+                <td><label>Categoría</label></td>
+                <td><select name="category" id="category" class="combobox">
+                        <option value="operario">Operario</option>
+                        <option value="limpiador">Limpiador</option>
+                        <option value="gerente">Gerente</option>
+                </select></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><input type="submit" name="submit" id="submit" class="submit" value="Enviar"/></td>
+            </tr>
+        </table>
+        
+    </form>
+
+    <script src="javascript/javascript.js"></script>
+</body>
+
+</html>
