@@ -1,0 +1,73 @@
+/* operarios.css
+    Aplica estilos verdes/rojos según validación nativa o clases desde JS.
+*/
+
+/* Base para inputs dentro del contenedor .operarios */
+.operarios input,
+.operarios textarea,
+.operarios select {
+    box-sizing: border-box;
+    width: 100%;
+    padding: .5rem .6rem;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    background: #fff;
+    transition: border-color .15s ease, box-shadow .15s ease, background-color .15s;
+    outline: none;
+}
+
+/* Validación nativa: solo afectados los campos requeridos para evitar marcar vacíos */
+.operarios input:required:valid,
+.operarios textarea:required:valid,
+.operarios select:required:valid {
+    border-color: #28a745;
+    /* verde */
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.12);
+    background-color: #f6fffa;
+}
+
+/* Campos inválidos (nativa) */
+.operarios input:required:invalid,
+.operarios textarea:required:invalid,
+.operarios select:required:invalid {
+    border-color: #dc3545;
+    /* rojo */
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.12);
+    background-color: #fff6f6;
+}
+
+/* Si usas validación mediante JavaScript, añade/elimna clases .valid / .invalid */
+.operarios input.valid,
+.operarios textarea.valid,
+.operarios select.valid {
+    border-color: #28a745;
+    box-shadow: 0 0 0 4px rgba(40, 167, 69, 0.12);
+    background-color: #f6fffa;
+}
+
+.operarios input.invalid,
+.operarios textarea.invalid,
+.operarios select.invalid {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 4px rgba(220, 53, 69, 0.12);
+    background-color: #fff6f6;
+}
+
+/* Mejora visual al enfocar */
+.operarios input:focus:not(:invalid),
+.operarios textarea:focus:not(:invalid),
+.operarios select:focus:not(:invalid) {
+    border-color: #3b82f6;
+    box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.10);
+}
+
+div#imags {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.imagen {
+    display: inline-block;
+}

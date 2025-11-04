@@ -1,0 +1,70 @@
+
+
+// Variables
+$bg: #f3f4f6
+$panel: #ffffff
+$accent: #0ea5a3
+$btn: #e6e7e8
+$op: #ffd166
+$font-stack: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial
+
+// Estilos generales
+body
+    margin: 0
+    min-height: 100vh
+    display: flex
+    align-items: center
+    justify-content: center
+    background: linear-gradient(180deg, $bg, #fff)
+    padding: 20px
+    font-family: $font-stack
+
+.calc
+    width: 320px
+    background: $panel
+    border-radius: 12px
+    box-shadow: 0 8px 30px rgba(2, 6, 23, 0.12)
+    overflow: hidden
+
+.display
+    background: linear-gradient(180deg, #0b1220 0%, #071021 60%)
+    color: #fff
+    padding: 18px
+    text-align: right
+    font-size: 32px
+    letter-spacing: 0.6px
+
+    .secondary
+        color: rgba(255, 255, 255, 0.65)
+        font-size: 14px
+
+.keys
+    display: grid
+    grid-template-columns: repeat(4, 1fr)
+    gap: 10px
+    padding: 16px
+    background: linear-gradient(180deg, #f7fafc, #f3f6f8)
+
+    button
+        height: 56px
+        font-size: 18px
+        border: 0
+        border-radius: 8px
+        background: $btn
+        cursor: pointer
+        box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) inset
+        transition: transform 0.1s ease
+
+    &:active
+        transform: translateY(1px)
+
+    &.operator
+        background: $op
+
+    &.equal
+        background: $accent
+        color: #fff
+        grid-column: span 2
+
+    &.wide
+        grid-column: span 2

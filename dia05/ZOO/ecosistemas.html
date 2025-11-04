@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #66ea78 0%, #764ba2 100%);
+        
+        }
+        .descripcion p::first-letter {
+            font-size: 2em;
+            /* doble tamaño respecto al texto normal */
+            font-weight: 700;
+            float: left;
+            line-height: 0.85;
+            margin-right: 0.2em;
+            /* sombra para dar relieve */
+            text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.25);
+            /* intentar fuente tipo medieval; si no existe, usar serif elegante */
+            font-family: "Uncial Antiqua", "Cormorant Garamond", "Garamond", serif;
+            color: #2b3a67;
+            /* opcional: añadir borde sutil */
+            padding-left: 0.03em;
+            padding-top: 0.02em;
+        }
+
+        @media (max-width: 880px) {
+            .descripcion {
+                column-count: 1;
+            }
+        }
+
+        .texto {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            margin-left: 5%;
+            background-color: white;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            margin-right: 5%;
+        }
+        img{
+            margin: 0 auto;
+            display: block;
+        }
+
+    </style>
+</head>
+
+<body>
+    <div id="cabecera"></div>
+    <section>
+        <div id="ecosistema" class="descripcion">
+            <br>
+            <article> <img src="Ecosistemas/800x300/Desierto.jpg" alt="Desierto">
+                <div class="texto" id="desierto">
+                    <p>El desierto se caracteriza por sus bajas precipitaciones y amplias extensiones de suelo árido.
+                        Las
+                        temperaturas pueden ser extremas entre el día y la noche, con jornadas de calor intenso y noches
+                        gélidas. La variabilidad térmica obliga a plantas y animales a desarrollar estrategias de
+                        refugio,
+                        conservación de agua y actividad en horas concretas. Además, los suelos desérticos suelen tener
+                        poca
+                        materia orgánica, lo que limita la recuperación tras disturbios.</p>
+                    <p>La flora es principalmente xerófila: cactus, arbustos resistentes y pequeños pastos que conservan
+                        agua. Muchas especies poseen hojas modificadas, cutículas gruesas o raíces profundas para captar
+                        humedad. La fauna incluye reptiles, roedores y aves adaptadas al calor; además, insectos y
+                        microorganismos desempeñan papel esencial en los ciclos nutritivos. Las relaciones tróficas son
+                        frágiles y cualquier alteración puede provocar desequilibrios prolongados.</p>
+                    <p>Los ecosistemas desérticos son frágiles; la actividad humana y el cambio climático pueden causar
+                        desertificación y pérdida de biodiversidad. La sobreexplotación de acuíferos, el pastoreo
+                        intensivo
+                        y la minería incrementan la erosión y la salinización, reduciendo la productividad del suelo. La
+                        conservación requiere manejo sostenible del agua, prevención de la pérdida de suelo y protección
+                        de
+                        hábitats clave para conservar especies endémicas y servicios ecosistémicos.</p>
+                </div>
+            </article>
+            <article> <img src="Ecosistemas/800x300/Manglar.jpg" alt="Manglar">
+                <div class="texto" id="manglar">
+                    <p>Los manglares son zonas costeras con árboles adaptados a aguas salinas y suelos anóxicos. Forman
+                        laberintos de raíces que protegen la costa frente a la erosión y amortiguan la energía de las
+                        olas.
+                        Estas raíces sirven además como filtros naturales, reteniendo sedimentos y contaminantes antes
+                        de
+                        que lleguen al mar abierto. Su estructura compleja favorece alta diversidad y numerosos nichos
+                        ecológicos para peces, crustáceos y aves.</p>
+                    <p>Son viveros naturales para muchas especies marinas y aves migratorias. Las raíces atrapan
+                        sedimentos,
+                        mejorando la calidad del agua y facilitando la regeneración de la costa; a la vez capturan
+                        carbono
+                        de forma eficiente, lo que los convierte en sumideros importantes para el clima. La pesca y las
+                        comunidades locales dependen de los recursos que generan los manglares, por lo que su
+                        conservación
+                        tiene implicaciones sociales y económicas.</p>
+                    <p>La destrucción de manglares por urbanización y acuicultura reduce la protección frente a
+                        tormentas y
+                        perjudica la pesca local. La restauración de manglares implica replanteamiento del uso del
+                        suelo,
+                        eliminación de barreras a la llegada de sedimentos y programas de replantación con especies
+                        locales.
+                        Mantener corredores costeros y políticas de gestión integrada ayuda a preservar estos
+                        ecosistemas
+                        frente a eventos extremos y al aumento del nivel del mar.</p>
+                </div>
+            </article>
+            <article> <img src="Ecosistemas/800x300/Paramo.jpg" alt="Páramo">
+                <div class="texto" id="paramo">
+                    <p>El páramo es un ecosistema altoandino con clima frío, humedad frecuente y suelos ricos en materia
+                        orgánica. Es típico en regiones tropicales de gran altitud y presenta una vegetación
+                        especializada
+                        capaz de resistir fuertes radiaciones y heladas nocturnas. Su paisaje incluye mofetas,
+                        frailejones y
+                        turberas que regulan el flujo de agua hacia las cuencas inferiores. La complejidad de sus
+                        microhábitats alberga especies endémicas y adaptaciones únicas.</p>
+                    <p>Su vegetación incluye frailejones, musgos y pastos adaptados al frío; alberga endemismos y fauna
+                        especializada como roedores y aves de altura. Muchos procesos ecológicos son lentos debido a las
+                        condiciones climáticas, por lo que las perturbaciones tardan en recuperarse. El páramo actúa
+                        además
+                        como barrera ecológica y corredor biogeográfico entre diferentes regiones montañosas.</p>
+                    <p>El páramo actúa como esponja de agua: regula el suministro hídrico de valles y ciudades aguas
+                        abajo,
+                        por eso su conservación es crucial. La quema, el sobrepastoreo y la expansión agrícola alteran
+                        su
+                        capacidad de retención de agua y provocan pérdida de suelo. La gestión sostenible requiere
+                        planificación territorial, medidas de conservación comunitaria y programas de restauración que
+                        respeten la dinámica hídrica natural.</p>
+                </div>
+            </article>
+            <article> <img src="Ecosistemas/800x300/Pradera.jpg" alt="Pradera">
+                <div class="texto" id="padrera">
+                    <p>Las praderas son extensiones dominadas por pastos y hierbas, con pocas zonas arboladas. Su clima
+                        suele ser templado y con estaciones marcadas, lo que determina ciclos de crecimiento y
+                        reproducción
+                        de plantas y animales. Suelen ser sistemas productivos tanto para fauna silvestre como para
+                        actividades humanas como la ganadería y ciertos cultivos, por lo que su manejo define su salud
+                        ecológica.</p>
+                    <p>Soportan grandes poblaciones de herbívoros y depredadores; además son importantes para la
+                        agricultura
+                        y el pastoreo sostenible. La diversidad funcional de las praderas contribuye al reciclado de
+                        nutrientes, estabilización del suelo y almacenamiento de carbono en la biomasa y en el suelo. La
+                        heterogeneidad del paisaje —parches de matorral, humedales temporales y zonas de pasto— favore
+                        capacidad de retención de carbono del suelo. Prácticas como rotación de pasturas, restauración
+                        de
+                        praderas nativas y manejo integrado del pastoreo ayudan a recuperar funciones ecológicas y a
+                        mantener la productividad a largo plazo, beneficiando tanto a comunidades locales como al clima
+                        regional.</p>
+                    <p>Soportan grandes poblaciones de herbívoros y depredadores; además son importantes para la
+                        agricultura
+                        y el pastoreo sostenible. La diversidad funcional de las praderas contribuye al reciclado de
+                        nutrientes, estabilización del suelo y almacenamiento de carbono en la biomasa y en el suelo. La
+                        heterogeneidad del paisaje —parches de matorral, humedales temporales y zonas de pasto— favore
+                        capacidad de retención de carbono del suelo. Prácticas como rotación de pasturas, restauración
+                        de
+                        praderas nativas y manejo integrado del pastoreo ayudan a recuperar funciones ecológicas y a
+                        mantener la productividad a largo plazo, beneficiando tanto a comunidades locales como al clima
+                        regional.</p>
+                </div>
+            </article>
+            <article> <img src="Ecosistemas/800x300/Sabana.jpg" alt="Sabana">
+                <div class="texto" id="sabana">
+                    <p>La sabana combina amplias llanuras de pastos con árboles dispersos y un régimen de lluvias
+                        estacional. Las estaciones secas y húmedas marcan el ciclo de crecimiento de la vegetación y la
+                        disponibilidad de recursos; los incendios naturales o manejados juegan un papel ecológico en la
+                        renovación de pastos. La estructura abierta del paisaje favorece grandes herbívoros y
+                        depredadores,
+                        generando dinámicas de fauna muy activas y visibles.</p>
+                    <p>Alberga grandes mamíferos, aves y una flora adaptada a incendios periódicos y sequías; la
+                        interacción
+                        entre herbívoros y vegetación es clave. Los patrones migratorios y las relaciones tróficas
+                        sostienen
+                        numerosos servicios ecosistémicos, incluida la regulación del ciclo del agua y el mantenimiento
+                        de
+                        suelos fértiles. La pérdida de conectividad y la fragmentación por actividades humanas afectan
+                        estas
+                        dinámicas y la estabilidad del ecosistema.</p>
+                    <p>El uso inadecuado del fuego y la conversión a agricultura intensiva reducen su diversidad y
+                        alteran
+                        los ciclos naturales. La gestión sostenible implica prácticas de pastoreo rotacional, control de
+                        incendios, y conservación de corredores biológicos para mantener poblaciones viables de fauna.
+                        La
+                        participación de comunidades locales en la gestión y la implementación de políticas basadas en
+                        la
+                        ciencia son esenciales para conservar la sabana a largo plazo.</p>
+                </div>
+            </article>
+        </div>
+    </section>
+
+    <div id="pie"></div>
+    <script src="cabecera.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,13 @@
+$color-fondo: red
+$color-texto: blue
+
+@mixin theme($color-borde: DarkGray)
+    background: $color-fondo
+    box-shadow: 0 0 1px rgba($color-borde, .25)
+    color: $color-texto
+
+h1
+    background-color: $color-fondo
+    color: $color-texto
+h2
+    @include theme

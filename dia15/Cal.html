@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Calculadora</title>
+    <!--<style>
+        :root {
+            --bg: #f3f4f6;
+            --panel: #ffffff;
+            --accent: #0ea5a3;
+            --btn: #e6e7e8;
+            --op: #ffd166;
+            font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(180deg, var(--bg), #fff);
+            padding: 20px;
+        }
+
+        .calc {
+            width: 320px;
+            background: var(--panel);
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(2, 6, 23, 0.12);
+            overflow: hidden;
+        }
+
+        .display {
+            background: linear-gradient(180deg, #0b1220 0%, #071021 60%);
+            color: #fff;
+            padding: 18px;
+            text-align: right;
+            font-size: 32px;
+            letter-spacing: 0.6px;
+        }
+
+        .secondary {
+            color: rgba(255, 255, 255, 0.65);
+            font-size: 14px;
+        }
+
+        .keys {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            padding: 16px;
+            background: linear-gradient(180deg, #f7fafc, #f3f6f8);
+        }
+
+        button {
+            height: 56px;
+            font-size: 18px;
+            border: 0;
+            border-radius: 8px;
+            background: var(--btn);
+            cursor: pointer;
+            box-shadow: 0 1px 0 rgba(0, 0, 0, 0.05) inset;
+        }
+
+        button.operator {
+            background: var(--op);
+        }
+
+        button.equal {
+            background: var(--accent);
+            color: #fff;
+            grid-column: span 2;
+        }
+
+        button.wide {
+            grid-column: span 2;
+        }
+
+        button:active {
+            transform: translateY(1px);
+        }
+    </style>-->
+    <link rel="stylesheet" href="origen.css" media="screen">
+    <link rel="stylesheet" type="text/sass" href="origen.sass" media="screen">
+
+</head>
+
+<body>
+    <div class="calc" role="application" aria-label="Calculadora básica">
+        <div class="display" id="display">
+            <div class="secondary" id="history">&nbsp;</div>
+            <div id="value">0</div>
+        </div>
+        <div class="keys">
+            <button id="clear">C</button>
+            <button id="plusminus">±</button>
+            <button id="percent">%</button>
+            <button class="operator" data-op="/">÷</button>
+
+            <button class="digit">7</button>
+            <button class="digit">8</button>
+            <button class="digit">9</button>
+            <button class="operator" data-op="*">×</button>
+
+            <button class="digit">4</button>
+            <button class="digit">5</button>
+            <button class="digit">6</button>
+            <button class="operator" data-op="-">−</button>
+
+            <button class="digit">1</button>
+            <button class="digit">2</button>
+            <button class="digit">3</button>
+            <button class="operator" data-op="+">+</button>
+
+            <button class="digit wide">0</button>
+            <button class="digit">.</button>
+            <button class="equal" id="equals">=</button>
+        </div>
+    </div>
+
+    <script>
+        // Lógica de calculadora: dos operandos + operaciones básicas
+        const displayEl = document.getElementById('value');
+        const historyEl = document.getElementById('history');
+        const digits = document.querySelectorAll('.digit');
+        const ops = document.querySelectorAll('.operator');
+        const clearBtn = document.getElementById('clear');
+        const equalsBtn = document.getElementById('equals');
+        const plusMinus = document.getElementById('plusminus');
+        const percentBtn = document.getElementById('percent');
+
+        let first = null;        // primer operando (number)
+        let operator = null;     // operador actual ("+", "-", "*", "/")
+        let entering = false;    // si el usuario está escribiendo el segundo operando
+        let current = '0';       // cadena del número mostrado
+
+        function updateDisplay() {
+            displayEl.textContent = current;
+            historyEl.textContent = first !== null && operator ? `${first} ${operator}` : '\u00A0';
+        }
+
+        function inputDigit(d) {
+            if (!entering || current === '0') {
+                current = d === '.' ? '0.' : d;
+                entering = true;
+            } else {
+                if (d === '.' && current.includes('.')) return;
+                current += d;
+            }
+            updateDisplay();
+        }
+
+        function setOperator(op) {
+            if (first === null) {
+                first = parseFloat(current);
+            } else if (entering) {
+                // hacer operación previa antes de encadenar
+                const result = compute(first, operator, parseFloat(current));
+                first = result;
+                current = String(formatResult(result));
+            }
+            operator = op;
+            entering = false;
+            updateDisplay();
+        }
+
+        function compute(a, op, b) {
+            if (isNaN(a) || isNaN(b) || !op) return b;
+            switch (op) {
+                case '+': return a + b;
+                case '-': return a - b;
+                case '*': return a * b;
+                case '/': return b === 0 ? NaN : a / b;
+                default: return b;
+            }
+        }
+
+        function formatResult(n) {
+            if (!isFinite(n)) return 'Error';
+            // Limitar decimales razonables
+            const s = String(n);
+            if (s.length > 12 && Math.abs(n) >= 1) {
+                return Number(n.toPrecision(12));
+            }
+            return n;
+        }
+
+        // Eventos
+        digits.forEach(btn => btn.addEventListener('click', () => inputDigit(btn.textContent)));
+        ops.forEach(btn => btn.addEventListener('click', () => setOperator(btn.dataset.op)));
+        equalsBtn.addEventListener('click', () => {
+            if (operator === null) return;
+            const b = parseFloat(current);
+            const result = compute(first, operator, b);
+            current = String(formatResult(result));
+            if (current === 'Error' || isNaN(result)) {
+                current = 'Error';
+            }
+            first = null;
+            operator = null;
+            entering = false;
+            updateDisplay();
+        });
+
+        clearBtn.addEventListener('click', () => {
+            first = null; operator = null; entering = false; current = '0'; updateDisplay();
+        });
+
+        plusMinus.addEventListener('click', () => {
+            if (current === '0' || current === 'Error') return;
+            current = String(parseFloat(current) * -1);
+            updateDisplay();
+        });
+
+        percentBtn.addEventListener('click', () => {
+            if (current === 'Error') return;
+            current = String(parseFloat(current) / 100);
+            updateDisplay();
+        });
+
+        // Soporte teclado básico
+        window.addEventListener('keydown', (e) => {
+            if (e.key >= '0' && e.key <= '9') inputDigit(e.key);
+            else if (e.key === '.') inputDigit('.');
+            else if (e.key === 'Enter' || e.key === '=') { e.preventDefault(); equalsBtn.click(); }
+            else if (e.key === '+' || e.key === '-' || e.key === '*' || e.key === '/') {
+                // map division symbol if needed
+                setOperator(e.key);
+            } else if (e.key === 'Backspace') {
+                if (current.length > 1 && current !== 'Error') current = current.slice(0, -1);
+                else current = '0';
+                updateDisplay();
+            } else if (e.key.toLowerCase() === 'c') {
+                clearBtn.click();
+            }
+        });
+
+        // Inicializar
+        updateDisplay();
+    </script>
+</body>
+
+</html>

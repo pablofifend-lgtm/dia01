@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        footer {
+            background-color: #2d3748;
+            color: white;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .footer-info {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .footer-photo {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid #667eea;
+        }
+
+        .footer-email {
+            color: #667eea;
+            text-decoration: none;
+            font-size: 1.1rem;
+        }
+
+        .footer-email:hover {
+            text-decoration: underline;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .social-icon {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .social-icon:hover {
+            transform: translateY(-5px);
+        }
+
+        .social-icon img {
+            width: 48px;
+            height: 48px;
+            border-radius: 8px;
+        }
+
+        .copyright {
+            width: 100%;
+            text-align: center;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #4a5568;
+            color: #a0aec0;
+        }
+
+        @media (max-width: 768px) {
+            .footer-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-info">
+                <img src="iconos/Oso-pardo.jpg" alt="Foto de perfil" class="footer-photo"
+                    onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22100%22 height=%22100%22%3E%3Ccircle cx=%2250%22 cy=%2250%22 r=%2250%22 fill=%22%23667eea%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 font-size=%2250%22 text-anchor=%22middle%22 dy=%22.3em%22%3E👤%3C/text%3E%3C/svg%3E'">
+                <a href="mailto:contacto@zoo.com" class="footer-email">pablofifend@gmail.com</a>
+            </div>
+
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" class="social-icon" title="Facebook">
+                    <img src="iconos/face.jpg" alt="Facebook"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22%3E%3Crect fill=%22%231877f2%22 width=%2248%22 height=%2248%22 rx=%228%22/%3E%3Cpath fill=%22white%22 d=%22M30 24h-4v-3c0-1.1.4-2 2-2h2v-4h-3c-4 0-5 3-5 5v4h-3v4h3v12h5V28h3l1-4z%22/%3E%3C/svg%3E'">
+                </a>
+                <a href="https://linkedin.com" target="_blank" class="social-icon" title="LinkedIn">
+                    <img src="iconos/li.png" alt="LinkedIn"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22%3E%3Crect fill=%22%230a66c2%22 width=%2248%22 height=%2248%22 rx=%228%22/%3E%3Cpath fill=%22white%22 d=%22M14 20h4v13h-4V20zm2-6c1.3 0 2 .9 2 2s-.7 2-2 2-2-.9-2-2 .7-2 2-2zm6 6h4v2h.1c.6-1 2-2 4-2 4.3 0 5 2.8 5 6.4V33h-4v-6c0-1.4 0-3.2-2-3.2s-2 1.5-2 3.1V33h-4V20z%22/%3E%3C/svg%3E'">
+                </a>
+                <a href="https://wa.me/123456789" target="_blank" class="social-icon" title="WhatsApp">
+                    <img src="iconos/wh.jpg" alt="WhatsApp"
+                        onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2248%22 height=%2248%22%3E%3Crect fill=%22%2325d366%22 width=%2248%22 height=%2248%22 rx=%228%22/%3E%3Cpath fill=%22white%22 d=%22M24 12c-6.6 0-12 5.4-12 12 0 2.1.6 4.2 1.6 5.9L12 36l6.3-1.5c1.7.9 3.6 1.5 5.7 1.5 6.6 0 12-5.4 12-12s-5.4-12-12-12zm7 16.5c-.3.8-1.5 1.5-2.5 1.7-.7.1-1.5.2-4.4-.9-3.7-1.4-6-5.1-6.2-5.3-.2-.3-1.7-2.2-1.7-4.3s1.1-3 1.5-3.5c.3-.4.7-.5 1-.5h.7c.2 0 .5 0 .8.6.2.6.8 2 .9 2.1.1.2.1.4 0 .6-.1.2-.2.3-.4.5l-.6.7c-.2.2-.4.4-.2.8.2.4 1 1.6 2.2 2.6 1.5 1.3 2.8 1.7 3.2 1.9.4.2.6.1.8-.1.2-.2.9-1.1 1.2-1.5.2-.4.5-.3.8-.2l2.7 1.3c.4.2.6.3.7.5.1.2.1 1-.2 1.8z%22/%3E%3C/svg%3E'">
+                </a>
+            </div>
+
+            <div class="copyright">
+                <p>&copy; 2025 Mi Zoo. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
