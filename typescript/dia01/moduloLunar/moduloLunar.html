@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Minerales Lunares - Agmunsen</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div id="app" class="container">
+        <header class="header">
+            <h1 class="title">🌙 Sistema de Registro de Minerales Lunares</h1>
+            <p class="subtitle">Misión Agmunsen</p>
+        </header>
+
+        <div class="controls-grid">
+            <div class="control-box">
+                <label class="control-label">Modo de Vista:</label>
+                <select id="viewMode" class="control-select">
+                    <option value="extendida">Extendida (con labels)</option>
+                    <option value="reducida">Reducida (con placeholders)</option>
+                </select>
+            </div>
+
+            <div class="control-box">
+                <label class="control-label">Criterio de Validación:</label>
+                <select id="criterio" class="control-select">
+                    <option value="igneas">Criterio Ígneas</option>
+                    <option value="metamorficas">Criterio Metamórficas</option>
+                    <option value="sedimentarias">Criterio Sedimentarias</option>
+                </select>
+            </div>
+
+            <div class="control-box">
+                <label class="control-label">Formato de Salida:</label>
+                <select id="outputFormat" class="control-select">
+                    <option value="europeo">Formato Europeo (ES/°C)</option>
+                    <option value="americano">Formato Americano (EN/°F)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-container">
+            <h2 class="form-title">Datos del Mineral</h2>
+            <div id="formFields" class="form-grid"></div>
+            <button id="validateBtn" class="validate-btn">Validar Mineral</button>
+        </div>
+
+        <div id="resultContainer" class="result-container hidden">
+            <div id="validationResult" class="validation-result"></div>
+            <div id="mineralInfo" class="mineral-info hidden"></div>
+        </div>
+    </div>
+
+    <script src="scripts.js"></script>
+</body>
+
+</html>

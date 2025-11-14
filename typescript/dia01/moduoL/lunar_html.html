@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Análisis de Minerales Lunares - Agmunsen</title>
+    <link rel="stylesheet" href="lunar_css.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>🌙 Sistema de Análisis de Minerales Lunares</h1>
+            <p class="subtitle">Misión Agmunsen - Recolección de Muestras</p>
+        </header>
+
+        <div class="controles-globales">
+            <div class="control-grupo">
+                <label for="selector-validador">Criterio de Validación:</label>
+                <select id="selector-validador">
+                    <option value="igneas">Criterio Ígneas</option>
+                    <option value="metamorficas">Criterio Metamórficas</option>
+                    <option value="sedimentarias">Criterio Sedimentarias</option>
+                </select>
+            </div>
+
+            <div class="control-grupo">
+                <label for="selector-formato">Formato de Salida:</label>
+                <select id="selector-formato">
+                    <option value="americano">Formato Americano (°F)</option>
+                    <option value="europeo">Formato Europeo (°C)</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="botones-prueba">
+            <button id="btn-prueba-valida" class="btn-secundario">🧪 Probar Roca Válida (Ígnea)</button>
+            <button id="btn-prueba-invalida" class="btn-secundario">🧪 Probar Roca Inválida</button>
+        </div>
+
+        <div class="formularios-container">
+            <!-- FORMULARIO EXTENDIDO -->
+            <div class="formulario-wrapper">
+                <h2>📋 Formulario Extendido (con etiquetas)</h2>
+                <form id="formulario-extendido">
+                    <div class="form-group">
+                        <label for="id">ID (formato: LLDDDDLL):</label>
+                        <input type="text" id="id" pattern="[A-Z]{2}\d{4}[A-Z]{2}" placeholder="Ej: AB1234CD" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="nombre">Nombre del Mineral:</label>
+                        <input type="text" id="nombre" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="grupo">Grupo/Origen:</label>
+                        <select id="grupo" required>
+                            <option value="">Seleccione...</option>
+                            <option value="igneas">Ígneas</option>
+                            <option value="metamorficas">Metamórficas</option>
+                            <option value="sedimentarias">Sedimentarias</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dureza">Dureza (Escala de Mohs 1-10):</label>
+                        <input type="number" id="dureza" min="1" max="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tamanoGrano">Tamaño de Grano:</label>
+                        <select id="tamanoGrano" required>
+                            <option value="">Seleccione...</option>
+                            <option value="muy_grueso">Muy Grueso (> 30mm)</option>
+                            <option value="grueso">Grueso (5-30mm)</option>
+                            <option value="medio">Medio (2-5mm)</option>
+                            <option value="fino">Fino (< 2mm)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="clasificacion">Clasificación:</label>
+                        <select id="clasificacion" required>
+                            <option value="">Seleccione...</option>
+                            <option value="construccion">Rocas de Construcción</option>
+                            <option value="ornamental">Rocas Ornamentales</option>
+                            <option value="utensilios">Rocas de Uso en Utensilios</option>
+                            <option value="machacada">Piedras Machacadas</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="tamanoCristales">Tamaño de Cristales (0-10):</label>
+                        <input type="number" id="tamanoCristales" min="0" max="10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="temperatura">Temperatura de Formación (Kelvin, -100 a 100):</label>
+                        <input type="number" id="temperatura" min="-100" max="100" step="0.1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="estructura">Estructura:</label>
+                        <textarea id="estructura" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="formaGranos">Forma de los Granos:</label>
+                        <textarea id="formaGranos" rows="3" required></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="textura">Textura:</label>
+                        <select id="textura" required>
+                            <option value="">Seleccione...</option>
+                            <option value="vitrea">Vítrea</option>
+                            <option value="afanitica">Afanítica</option>
+                            <option value="faneritica">Fanerítica</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="btn-analizar-extendido" class="btn-principal">🔬 Analizar Mineral</button>
+                    <div id="resultado-extendida" class="resultado"></div>
+                </form>
+            </div>
+
+            <!-- FORMULARIO REDUCIDO -->
+            <div class="formulario-wrapper">
+                <h2>📝 Formulario Reducido (con placeholders)</h2>
+                <form id="formulario-reducido">
+                    <div class="form-group-compact">
+                        <input type="text" id="id-r" pattern="[A-Z]{2}\d{4}[A-Z]{2}" placeholder="ID (Ej: AB1234CD)"
+                            required>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <input type="text" id="nombre-r" placeholder="Nombre del mineral" required>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <select id="grupo-r" required>
+                            <option value="">Grupo/Origen...</option>
+                            <option value="igneas">Ígneas</option>
+                            <option value="metamorficas">Metamórficas</option>
+                            <option value="sedimentarias">Sedimentarias</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <input type="number" id="dureza-r" min="1" max="10" placeholder="Dureza (1-10)" required>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <select id="tamanoGrano-r" required>
+                            <option value="">Tamaño de Grano...</option>
+                            <option value="muy_grueso">Muy Grueso (> 30mm)</option>
+                            <option value="grueso">Grueso (5-30mm)</option>
+                            <option value="medio">Medio (2-5mm)</option>
+                            <option value="fino">Fino (< 2mm)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <select id="clasificacion-r" required>
+                            <option value="">Clasificación...</option>
+                            <option value="construccion">Construcción</option>
+                            <option value="ornamental">Ornamental</option>
+                            <option value="utensilios">Utensilios</option>
+                            <option value="machacada">Machacada</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <input type="number" id="tamanoCristales-r" min="0" max="10"
+                            placeholder="Tamaño Cristales (0-10)" required>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <input type="number" id="temperatura-r" min="-100" max="100" step="0.1"
+                            placeholder="Temperatura (K, -100 a 100)" required>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <textarea id="estructura-r" rows="2" placeholder="Estructura..." required></textarea>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <textarea id="formaGranos-r" rows="2" placeholder="Forma de granos..." required></textarea>
+                    </div>
+
+                    <div class="form-group-compact">
+                        <select id="textura-r" required>
+                            <option value="">Textura...</option>
+                            <option value="vitrea">Vítrea</option>
+                            <option value="afanitica">Afanítica</option>
+                            <option value="faneritica">Fanerítica</option>
+                        </select>
+                    </div>
+
+                    <button type="submit" id="btn-analizar-reducido" class="btn-principal">🔬 Analizar Mineral</button>
+                    <div id="resultado-reducida" class="resultado"></div>
+                </form>
+            </div>
+        </div>
+
+        <!-- ÁREA DE SALIDA -->
+        <div class="salida-container">
+            <div id="salida-americana" class="salida" style="display: none;"></div>
+            <div id="salida-europea" class="salida" style="display: none;"></div>
+        </div>
+
+        <footer>
+            <p>Sistema desarrollado para la Misión Lunar Agmunsen | Agencia Espacial Europea & NASA</p>
+        </footer>
+    </div>
+
+    <script type="module" src="lunar_main.js"></script>
+</body>
+
+</html>
