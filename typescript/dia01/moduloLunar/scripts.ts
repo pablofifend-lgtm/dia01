@@ -8,6 +8,14 @@ type Criterio = 'igneas' | 'metamorficas' | 'sedimentarias';
 type OutputFormat = 'europeo' | 'americano';
 type Language = 'es' | 'en';
 
+interface IValidable {
+    nombre: string;
+}
+enum TipoValidacion {
+    IdMineral,
+    PropiedadesMineral
+}
+
 interface Mineral {
     id: string;
     nombre: string;
@@ -540,3 +548,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Render inicial
     renderForm();
 });
+
+class FactoriaDeValidables {
+    static crearValidable(tipo: TipoValidacion): IValidable {
+        switch (tipo) {
+            case TipoValidacion.IdMineral:
+                return { nombre: 'Validación de ID de Mineral' };
+            case TipoValidacion.PropiedadesMineral:
+                return { nombre: 'Validación de Propiedades del Mineral' };
+            default:
+                throw new Error('Tipo de validación no reconocido');
+        }
+    }
+}
